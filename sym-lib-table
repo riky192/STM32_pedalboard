@@ -1,0 +1,5 @@
+(sym_lib_table
+  (version 7)
+  (lib (name "PCM3168A")(type "KiCad")(uri "${KIPRJMOD}/ul_PCM3168APAP/KiCADv6/2024-03-13_22-57-09.kicad_sym")(options "")(descr ""))
+  (lib (name "IS42SM32160")(type "KiCad")(uri "${KIPRJMOD}/IS42SM32160E_6BLI/KiCADv6/2024-03-16_22-14-23.kicad_sym")(options "")(descr ""))
+)

@@ -1,0 +1,5 @@
+(fp_lib_table
+  (version 7)
+  (lib (name "IS42SM32160E")(type "KiCad")(uri "${KIPRJMOD}/IS42SM32160E_6BLI/KiCADv6/footprints.pretty")(options "")(descr ""))
+  (lib (name "PCM3168A")(type "KiCad")(uri "${KIPRJMOD}/ul_PCM3168APAP/KiCADv6/footprints.pretty")(options "")(descr ""))
+)
