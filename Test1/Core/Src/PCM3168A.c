@@ -16,6 +16,9 @@
 #define PCM3168A_REG_52 0x52 // Digital Audio Interface Format Control 3
 #define PCM3168A_REG_54 0x54 // Audio Interface Control
 
+
+// Written by Elyakim
+
 // Function Prototypes
 static void PCM3168A_I2C_Init(I2C_HandleTypeDef *hi2c);
 static void PCM3168A_SAI_Init(SAI_HandleTypeDef *hsai_a, SAI_HandleTypeDef *hsai_b);
