@@ -7,7 +7,7 @@
 #define PCM3168A_RESET_PIN GPIO_PIN_5
 #define PCM3168A_RESET_PORT GPIOB
 
-void PCM3168A_Init(I2C_HandleTypeDef *hi2c, SAI_HandleTypeDef *hsai_a, SAI_HandleTypeDef *hsai_b);
+void PCM3168A_Init();
 void PCM3168A_Reset(void);
 HAL_StatusTypeDef PCM3168A_WriteRegister(I2C_HandleTypeDef *hi2c, uint8_t reg, uint8_t value);
 

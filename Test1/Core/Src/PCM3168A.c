@@ -25,7 +25,7 @@ static void PCM3168A_SAI_Init(SAI_HandleTypeDef *hsai_a, SAI_HandleTypeDef *hsai
 HAL_StatusTypeDef PCM3168A_WriteRegister(I2C_HandleTypeDef *hi2c, uint8_t reg, uint8_t value);
 
 // PCM3168A Initialization
-void PCM3168A_Init(I2C_HandleTypeDef *hi2c, SAI_HandleTypeDef *hsai_a, SAI_HandleTypeDef *hsai_b) {
+void PCM3168A_Init() {
     PCM3168A_Reset();
 
     PCM3168A_I2C_Init(hi2c);
@@ -33,22 +33,20 @@ void PCM3168A_Init(I2C_HandleTypeDef *hi2c, SAI_HandleTypeDef *hsai_a, SAI_Handl
 
     // PCM3168A Register Initialization for 48kHz, I2S/Left-Justified TDM
 
-    // Power Down Control: Exit power down
-    PCM3168A_WriteRegister(hi2c, PCM3168A_REG_00, 0x00);
+    // Set sample rate to 48kHz
+    PCM3168A_WriteRegister(0x40, 0x00); // Set ADC and DAC sample rate to 48kHz
+    PCM3168A_WriteRegister(0x41, 0x00); // Additional sample rate settings
 
-    // AOSR: Audio Oversampling Rate (Default for 48kHz)
-    PCM3168A_WriteRegister(hi2c, PCM3168A_REG_40, 0x80);
+    // Configure audio format for I2S / Left-Justified TDM mode
+    PCM3168A_WriteRegister(0x42, 0x00); // I2S format
+    PCM3168A_WriteRegister(0x43, 0x00); // Left-Justified format if needed
 
-    // DOSR: DAC Oversampling Rate (Default for 48kHz)
-    PCM3168A_WriteRegister(hi2c, PCM3168A_REG_41, 0x80);
+    // Enable the DAC and ADC
+    PCM3168A_WriteRegister(0x44, 0xFF); // Enable all DAC channels
+    PCM3168A_WriteRegister(0x45, 0xFF); // Enable all ADC channels
 
-    // Digital Audio Interface Format Control: I2S or Left-Justified TDM
-    PCM3168A_WriteRegister(hi2c, PCM3168A_REG_50, 0x00); // Format control 1
-    PCM3168A_WriteRegister(hi2c, PCM3168A_REG_51, 0x00); // Format control 2
-    PCM3168A_WriteRegister(hi2c, PCM3168A_REG_52, 0x00); // Format control 3
-
-    // Audio Interface Control: TDM, I2S Mode
-    PCM3168A_WriteRegister(hi2c, PCM3168A_REG_54, 0x00);
+    // Set additional configuration if needed
+    // PCM3168A_WriteRegister(0x46, 0xXX);
 }
 
 // PCM3168A Reset
